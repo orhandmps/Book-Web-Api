@@ -1,14 +1,13 @@
-﻿using BtkAkademi.WebApi.Models;
-using BtkAkademi.WebApi.Repositories.Mapper;
+﻿using BtkAkademi.DataAccess.Mapper;
+using BtkAkademi.Domain.Entites;
 using Microsoft.EntityFrameworkCore;
 
-namespace BtkAkademi.WebApi.Repositories
+namespace BtkAkademi.DataAccess.EFCore
 {
     public class BtkContext : DbContext
     {
         public BtkContext(DbContextOptions options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

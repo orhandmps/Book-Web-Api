@@ -1,5 +1,4 @@
-using BtkAkademi.WebApi.Repositories;
-using Microsoft.EntityFrameworkCore;
+using BtkAkademi.WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +9,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<BtkContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
+builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureServiceManager();
 
 var app = builder.Build();
 

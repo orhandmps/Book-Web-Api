@@ -1,15 +1,15 @@
-﻿using BtkAkademi.WebApi.Models;
+﻿using BtkAkademi.Domain.Entites;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BtkAkademi.WebApi.Repositories.Mapper
+namespace BtkAkademi.DataAccess.Mapper
 {
     public class BookMapper : IEntityTypeConfiguration<Book>
     {
         public void Configure(EntityTypeBuilder<Book> builder)
         {
-            builder.ToTable("TBL_BOOKS").HasKey(t => t.Id);
-            builder.Property(t => t.Title).HasColumnName("TITLE").IsRequired().HasMaxLength(250);
+            //builder.ToTable("TBL_BOOKS").HasKey(t => t.Id);
+            //builder.Property(t => t.Title).HasColumnName("TITLE").IsRequired().HasMaxLength(250);
 
             builder.HasData(
                 new Book

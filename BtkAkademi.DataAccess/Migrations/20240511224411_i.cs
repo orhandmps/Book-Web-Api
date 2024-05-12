@@ -4,31 +4,31 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace BtkAkademi.WebApi.Migrations
+namespace BtkAkademi.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_1 : Migration
+    public partial class i : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TBL_BOOKS",
+                name: "Books",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TITLE = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TBL_BOOKS", x => x.Id);
+                    table.PrimaryKey("PK_Books", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
-                table: "TBL_BOOKS",
-                columns: new[] { "Id", "Price", "TITLE" },
+                table: "Books",
+                columns: new[] { "Id", "Price", "Title" },
                 values: new object[,]
                 {
                     { 1, 375m, "Orhan" },
@@ -41,7 +41,7 @@ namespace BtkAkademi.WebApi.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TBL_BOOKS");
+                name: "Books");
         }
     }
 }
